@@ -1,0 +1,23 @@
+<h3>New User</h3>
+
+<% if @user.errors.present? %>
+  <h5>Errors in your forms:</h5>
+  <ul>
+    <% @user.errors.full_messages.each do |error_msg|%>
+        <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for @user, url: users_path, method: :post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <br>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <br><br>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'List user', users_path%>
